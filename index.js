@@ -8,7 +8,6 @@ const payos = new PayOS(
     '02ca4bb742ba173ae3060860d3bb49312bb10cd4cac1f78f8e6f25fbcd6db0df'
 );
 const app = express();
-app.use(express.static('public'));
 app.use(express.json());
 
 const YOUR_DOMAIN = 'https://pay-os-ebook.vercel.app';
@@ -49,10 +48,12 @@ app.post('/create-payment-link', async (req, res) => {
     res.redirect(303, paymentLink.checkoutUrl);
 });
 
-//   https://f8b8-14-230-156-135.ngrok-free.app/receive-hook
+// https://f8b8-14-230-156-135.ngrok-free.app/receive-hook
 app.post('/receive-hook', async(req, res) => {
     console.log(req.body);
     res.json();
 });
 
-app.listen(3000, () => console.log('running on port 3000'));
+// Listen on the appropriate port for Vercel deployment
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
