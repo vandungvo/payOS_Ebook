@@ -34,6 +34,9 @@ readOrderCode();
 
 console.log('orderCode:', ordercode);
 
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
 app.post('/create-payment-link', async (req, res) => {
     const order = {
         amount: 10000,
