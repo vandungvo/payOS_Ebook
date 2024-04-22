@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Success</title>
+    <style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation-name: modalOpen;
+            animation-duration: 0.4s;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        @keyframes modalOpen {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="color: #333;">Hủy đơn hàng thành công!</h2>
+            <p style="font-size: 18px;">Bạn đã hủy đơn hàng thành công. Chuyển về <a href="index.html" style="color: #007bff; text-decoration: none;">Trang chủ</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("myModal");
+
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        window.onload = function() {
+            modal.style.display = "block";
+        }
+
+        closeBtn.onclick = function() {
+            closeModal();
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        function closeModal() {
+            modal.style.animationName = "modalClose";
+            modal.style.animationDuration = "0.4s";
+            setTimeout(function() {
+                window.location.href = "index.html";
+            }, 400);
+        }
+    </script>
+</body>
+</html>
