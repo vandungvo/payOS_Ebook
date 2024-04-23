@@ -10,7 +10,7 @@ const payos = new PayOS(
 const app = express();
 app.use(express.json());
 
-const YOUR_DOMAIN = 'https://pay-os-ebook.vercel.app';
+const YOUR_DOMAIN = 'http://localhost:3000/';
 let ordercode = 0;
 
 async function readOrderCode() {
@@ -32,9 +32,6 @@ async function writeOrderCode() {
 
 readOrderCode();
 
-console.log('orderCode:', ordercode);
-
-// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
 app.post('/create-payment-link', async (req, res) => {
@@ -57,6 +54,5 @@ app.post('/receive-hook', async(req, res) => {
     res.json();
 });
 
-// Listen on the appropriate port for Vercel deployment
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
