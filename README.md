@@ -1,4 +1,4 @@
-**Entry Test - Open Banking BootCamp**
+### Entry Test - Open Banking BootCamp**
 
 This project focuses on integrating payOS, a payment method, into a website for selling a book. The implementation utilizes HTML, CSS, JavaScript, Express, and Node.js.
 
